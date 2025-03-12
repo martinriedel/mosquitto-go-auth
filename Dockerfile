@@ -62,10 +62,6 @@ ENV CGO_ENABLED=1
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-# Install TARGETPLATFORM parser to translate its value to GOOS, GOARCH, and GOARM
-COPY --from=tonistiigi/xx:golang / /
-RUN go env
-
 # Install needed libc and gcc for target platform.
 RUN set -ex; \
   if [ ! -z "$TARGETPLATFORM" ]; then \
